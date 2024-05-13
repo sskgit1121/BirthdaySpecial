@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bdy1.1</title>
+<style>
+     @import url('https://fonts.googleapis.com/css?family=Fjalla+One|Mystery+Quest|Pacifico');
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+  font-size: 14px;
+  font-size: calc(100% + 0.5vw);
+}
+
+.wrapper {
+  overflow: hidden;
+  background-color: #333;
+  color: #fefdfb;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button {
+  padding: 5px;
+  margin: 25px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.birthday-message {
+  display: none;
+  position: absolute;
+  height: 200px;
+  z-index: 9999;
+  top: 200px;
+  color: white;
+  text-align: center;
+  margin: 10vw;
+  font-size: 2.5vw;
+}
+
+</style>
+<script>
+       
+            var image = document.getElementById('js-rain-background');
+var buttonEl = document.getElementById('js-rain-btn');
+var wrapperEl = document.getElementById('js-rain-wrapper');
+
+function run() {
+  image.onload = function() {
+    var engine = new RainyDay({
+      image: image,
+      blur: 6,
+      parent: wrapperEl
+    });
+    engine.rain([ [0, 2, 200], [3, 6, 8] ], 100);
+  };
+  image.src = "bdyimg/rain1.png";
+  
+}
+//<video src="bdyimg/rainning.mp4"></video>
+
+
+buttonEl.addEventListener('click', run);
+
+$('#js-rain-btn').click(function() {
+  $('.birthday-message').show();
+});
+
+function fourthpage(){
+            window.location.replace("bd2.html");
+        }
+</script>
+
+
+</head>
+<body onload="run()">
+    <div id="js-rain-wrapper" class="wrapper">
+        <div class="flex-container">
+        <p class="text">Dear Rosa, for everything that you have ever dreamed of for your birthday, all you have to do is click that button ...</p>
+        <button id="js-rain-btn" onclick="fourthpage()">
+       click me, birthday girl!
+      </button>
+        </div>
+        <img id="js-rain-background" 
+          alt="background" 
+          src="bdyimg/bgground0.jpg" 
+          crossorigin="anonymous" />
+      </div>
+      <div class="birthday-message">
+        <p>Rain on demand!  Whenever you are missing it (and our old view of Waitrose car park).  Yes, your very own special online rain generator.  For your birthday! How special is that? x</p>
+      </div>
+      
+      
+    
+</body>
+</html>
